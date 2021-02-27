@@ -1,21 +1,21 @@
 DROP TABLE IF EXISTS USER;
 CREATE TABLE USER (
 id BIGINT NOT NULL AUTO_INCREMENT,
-user_id BIGINT NULL,
-user_name VARCHAR ( 255 ) NULL,
-PASSWORD VARCHAR ( 255 ) NULL,
-nick_name VARCHAR ( 255 ) NULL,
-certificate_num VARCHAR ( 255 ) NULL,
+user_id BIGINT COMMENT '用户id',
+user_name VARCHAR ( 255 ) COMMENT '用户名',
+password VARCHAR ( 255 ) COMMENT '密码',
+nick_name VARCHAR ( 255 ) COMMENT '昵称',
+certificate_num VARCHAR ( 255 ) COMMENT '证件号码',
 create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-operate_user VARCHAR ( 255 ) NULL,
+operate_user VARCHAR ( 255 ) COMMENT '操作者',
 PRIMARY KEY ( id ) USING BTREE 
 ) ENGINE = INNODB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户';
 
 DROP TABLE IF EXISTS goods;
 CREATE TABLE goods (
 id BIGINT NOT NULL AUTO_INCREMENT,
-goods_id BIGINT NULL,
+goods_id BIGINT COMMENT '商品编号',
 goods_name VARCHAR ( 255 ) COMMENT '商品名称',
 goods_type VARCHAR ( 255 ) '商品类型',
 weight VARCHAR ( 255 ) '重量',
@@ -27,7 +27,7 @@ PRIMARY KEY ( id ) USING BTREE
 
 DROP TABLE IF EXISTS orders;
 CREATE TABLE orders (
-order_id BIGINT NOT NULL AUTO_INCREMENT,
+order_id BIGINT NOT NULL AUTO_INCREMENT COMMENT '订单id',
 user_id BIGINT COMMENT '用户编号',
 account FLOAT COMMENT '支付金额',
 order_state SMALLINT COMMENT '订单状态 1.未支付 2.已支付 3.未发货 4.已发货 5.交易成功 6.交易关闭',
