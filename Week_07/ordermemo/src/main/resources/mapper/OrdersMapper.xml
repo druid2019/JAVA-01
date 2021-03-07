@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rice.order.dao.OrdersDao">
+    <resultMap id="OrdersInfoResultMap" type="com.rice.order.model.Orders">
+        <result column="order_id" property="orderId"/>
+        <result column="user_id" property="userId"/>
+        <result column="account" property="account"/>
+        <result column="order_state" property="orderState"/>
+        <result column="pay_type" property="payType"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        order_id, user_id, account, order_state, pay_type, create_time, update_time
+    </sql>
+
+    <select id="findById" resultMap="OrdersInfoResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from orders
+        <where> order_id = #{orderId}
+        </where>
+    </select>
+
+    <insert id="batchSubmit">
+        insert into orders (user_id,account,order_state,pay_type,create_time,update_time) values
+        <foreach collection="data" item="item" separator=",">
+            (#{item.userId},#{item.account},#{item.orderState},#{item.payType},now(),now())
+        </foreach>
+    </insert>
+</mapper>
