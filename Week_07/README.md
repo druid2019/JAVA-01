@@ -61,3 +61,22 @@ for (int i = 0; i < 1000000; i++) {
 -Xms4096m -Xmx4096m
 ```
 
+
+
+```java
+ShardingSphere
+ShardingSphere是一套开源的分布式数据库中间件解决方案组成的生态圈，它由Sharding-JDBC、Sharding-Proxy和Sharding-Sidecar（计划中）这3款相互独立的产品组成。
+ShardingSphere定位为关系型数据库中间件，旨在充分合理地在分布式的场景下利用关系型数据库的计算和存储能力，而并非实现一个全新的关系型数据库。
+
+sharding-jdbc 定位为轻量级Java框架，在Java的JDBC层提供的额外服务。 它使用客户端直连数据库，以jar包形式提供服务，无需额外部署和依赖，可理解为增强版的JDBC驱动，完全兼容JDBC和各种ORM框架。
+
+适用于任何基于Java的ORM框架，如：JPA, Hibernate, Mybatis, Spring JDBC Template或直接使用JDBC。 基于任何第三方的数据库连接池，如：DBCP, C3P0, BoneCP, Druid, HikariCP等。 支持任意实现JDBC规范的数据库。目前支持MySQL，Oracle，SQLServer和PostgreSQL
+
+<dependency>
+    <groupId>io.shardingsphere</groupId>
+    <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+    <version>3.1.0</version>
+</dependency>
+
+```
+
