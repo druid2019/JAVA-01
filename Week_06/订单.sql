@@ -31,7 +31,7 @@ order_id BIGINT NOT NULL AUTO_INCREMENT COMMENT '订单id',
 user_id BIGINT COMMENT '用户编号',
 account FLOAT COMMENT '支付金额',
 order_state SMALLINT COMMENT '订单状态 1.未支付 2.已支付 3.未发货 4.已发货 5.交易成功 6.交易关闭',
-pay_type INT COMMENT '支付类型：1.在线支付 2.货到付款',
+pay_type SMALLINT COMMENT '支付类型：1.在线支付 2.货到付款',
 create_time TIMESTAMP COMMENT '创建时间',
 update_time TIMESTAMP COMMENT '更新时间',
 PRIMARY KEY ( order_id ) USING BTREE 

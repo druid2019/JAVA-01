@@ -32,3 +32,32 @@ List<Orders> ordersList = new ArrayList<>();
 -Xms4096m -Xmx4096m
 ```
 
+
+
+```java
+同样的方式，改变每次提交数量,每10万条提交一次
+for (int i = 0; i < 1000000; i++) {
+    if ((i+1) % 100000 == 0) {
+        ordermultiApplication.ordersService.batchSubmit(ordersList);
+        ordersList.clear();
+    }
+    Orders orders = Orders.builder()
+        .userId(BigInteger.valueOf(i+1))
+        .account((float) i)
+        .orderState(1)
+        .payType(1).build();
+        ordersList.add(orders);
+}
+```
+
+```
+2021-03-07 21:10:02.396  INFO 3652 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-07 21:10:02.722  INFO 3652 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-07 21:10:02.846  INFO 3652 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-03-07 21:10:02.866  INFO 3652 --- [           main] com.rice.order.OrdermultiApplication     : Started OrdermultiApplication in 4.894 seconds (JVM running for 5.812)
+30120ms
+耗时30m
+给的4G的内存
+-Xms4096m -Xmx4096m
+```
+
